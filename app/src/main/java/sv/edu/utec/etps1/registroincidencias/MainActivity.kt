@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RegistroIncidenciaScreen()
+                    RegistroAsistenciaScreen()
                 }
             }
         }
@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun RegistroIncidenciaScreen() {
+fun RegistroAsistenciaScreen() {
     var titulo by rememberSaveable { mutableStateOf("") }
     var descripcion by rememberSaveable { mutableStateOf("") }
     val mensajeInicial = stringResource(R.string.feedback_initial)
@@ -149,13 +149,13 @@ fun RegistroIncidenciaScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun RegistroIncidenciasPreview() {
+fun RegistroAsistenciasPreview() {
     RegistroIncidenciasTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            RegistroIncidenciaScreen()
+            RegistroAsistenciaScreen()
         }
     }
 }

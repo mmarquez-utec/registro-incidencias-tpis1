@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Registro de incidencias</string>
-    <string name="screen_title">Registro de incidencia</string>
-    <string name="screen_instruction">Ingresa el título y una descripción breve para preparar un nuevo reporte.</string>
-    <string name="field_title">Título</string>
+    <string name="app_name">Registro de asistencias</string>
+    <string name="screen_title">Registro de asistencia</string>
+    <string name="screen_instruction">Ingresa una identificación del registro y una descripción breve para preparar la asistencia.</string>
+    <string name="field_title">Identificación</string>
     <string name="field_description">Descripción</string>
-    <string name="action_create_report">Crear reporte</string>
-    <string name="feedback_heading">Estado del reporte</string>
-    <string name="feedback_initial">Aún no hay reporte creado.</string>
-    <string name="feedback_report_ready">Reporte preparado: %1$s</string>
+    <string name="action_create_report">Preparar asistencia</string>
+    <string name="feedback_heading">Estado de la asistencia</string>
+    <string name="feedback_initial">Aún no hay asistencia preparada.</string>
+    <string name="feedback_report_ready">Registro preparado: %1$s</string>
 </resources>

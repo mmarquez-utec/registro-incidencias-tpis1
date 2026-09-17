@@ -1,16 +1,25 @@
-# Registro de incidencias
+# Registro de asistencias
 
-Aplicación Android desarrollada como parte de la materia **Técnicas de Producción Industrial de Software I**. Esta versión convierte la pantalla inicial en un formulario capaz de reaccionar a la información ingresada por el usuario.
+Aplicación Android desarrollada como parte de la materia **Técnicas de Producción Industrial de Software I**. El objetivo del proyecto es evolucionar hacia una herramienta para registrar asistencia de alumnos en horarios definidos y consultar reportes básicos durante el ciclo.
 
 ## Funcionalidad implementada
 
-- Captura el título de una incidencia.
-- Captura una descripción breve en un campo multilínea.
+- Captura una identificación breve del registro de asistencia.
+- Captura una descripción o detalle del horario en un campo multilínea.
 - Mantiene los datos de la pantalla mediante estado de Jetpack Compose.
 - Habilita la acción principal únicamente cuando ambos campos contienen información.
-- Muestra una confirmación visible al preparar el reporte.
+- Muestra una confirmación visible al preparar el registro.
 
-> Esta versión trabaja solamente con estado local. Los reportes todavía no se guardan en una base de datos.
+> Esta versión trabaja solamente con estado local. Todavía no guarda datos en base de datos ni administra catálogos reales de alumnos, horarios o materias.
+
+## Visión del proyecto
+
+En próximas versiones, la aplicación podrá incorporar:
+
+- Registro y consulta de alumnos.
+- Definición de horarios de clase.
+- Marcación de asistencia por horario.
+- Reportería básica para revisar asistencia por alumno, fecha u horario.
 
 ## Tecnologías
 
@@ -37,9 +46,9 @@ Aplicación Android desarrollada como parte de la materia **Técnicas de Producc
 ## Comprobación
 
 1. Escribir un título y una descripción.
-2. Confirmar que el botón **Crear reporte** se habilite.
+2. Confirmar que el botón **Preparar asistencia** se habilite.
 3. Presionar el botón.
-4. Verificar que aparezca el mensaje `Reporte preparado: <título>`.
+4. Verificar que aparezca el mensaje `Registro preparado: <identificación>`.
 
 Las pruebas locales pueden ejecutarse en Windows con:
 
@@ -55,4 +64,4 @@ La prueba de interfaz requiere un dispositivo o emulador conectado:
 
 ## Estado del proyecto
 
-Actividad evaluada de la semana 6: interfaz con estado y evidencia en GitHub.
+Actividad evaluada de la semana 7: primer avance del módulo de asistencias y evidencia técnica del proyecto.

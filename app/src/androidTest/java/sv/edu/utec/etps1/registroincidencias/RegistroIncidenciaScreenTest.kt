@@ -24,7 +24,7 @@ class RegistroIncidenciaScreenTest {
         composeTestRule.onNodeWithTag("crearReporteButton").assertIsNotEnabled()
 
         composeTestRule.onNodeWithTag("tituloInput")
-            .performTextInput("Falla de impresora")
+            .performTextInput("Grupo A - Matemática")
 
         composeTestRule.onNodeWithTag("crearReporteButton").assertIsNotEnabled()
     }
@@ -40,9 +40,9 @@ class RegistroIncidenciaScreenTest {
     @Test
     fun crearReporteMuestraRetroalimentacionConElTitulo() {
         composeTestRule.onNodeWithTag("tituloInput")
-            .performTextInput("Falla de impresora")
+            .performTextInput("Grupo A - Matemática")
         composeTestRule.onNodeWithTag("descripcionInput")
-            .performTextInput("La impresora del área administrativa no responde.")
+            .performTextInput("Registro de asistencia del horario de la mañana.")
 
         composeTestRule.onNodeWithTag("crearReporteButton")
             .assertIsEnabled()
@@ -50,6 +50,6 @@ class RegistroIncidenciaScreenTest {
 
         composeTestRule.onNodeWithTag("mensajeEstado")
             .assertIsDisplayed()
-            .assertTextEquals("Reporte preparado: Falla de impresora")
+            .assertTextEquals("Registro preparado: Grupo A - Matemática")
     }
 }

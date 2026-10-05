@@ -6,9 +6,11 @@ Aplicación Android desarrollada como parte de la materia **Técnicas de Producc
 
 - Captura una identificación breve del registro de asistencia.
 - Captura una descripción o detalle del horario en un campo multilínea.
+- Configura el teclado contextual con capitalización por oración y acciones IME **Next** / **Done**.
+- Permite seleccionar mediante toque el estado de asistencia: **Presente**, **Ausente** o **Justificado**.
 - Mantiene los datos de la pantalla mediante estado de Jetpack Compose.
-- Habilita la acción principal únicamente cuando ambos campos contienen información.
-- Muestra una confirmación visible al preparar el registro.
+- Habilita la acción principal únicamente cuando los campos contienen información y existe un estado seleccionado.
+- Muestra retroalimentación visible al seleccionar un estado y al preparar el registro.
 
 > Esta versión trabaja solamente con estado local. Todavía no guarda datos en base de datos ni administra catálogos reales de alumnos, horarios o materias.
 
@@ -46,9 +48,10 @@ En próximas versiones, la aplicación podrá incorporar:
 ## Comprobación
 
 1. Escribir un título y una descripción.
-2. Confirmar que el botón **Preparar asistencia** se habilite.
-3. Presionar el botón.
-4. Verificar que aparezca el mensaje `Registro preparado: <identificación>`.
+2. Seleccionar un estado de asistencia mediante toque.
+3. Confirmar que el botón **Preparar asistencia** se habilite.
+4. Presionar el botón.
+5. Verificar que aparezca el mensaje `Registro preparado: <identificación> - Estado: <estado>`.
 
 Las pruebas locales pueden ejecutarse en Windows con:
 
@@ -64,4 +67,6 @@ La prueba de interfaz requiere un dispositivo o emulador conectado:
 
 ## Estado del proyecto
 
-Actividad evaluada de la semana 7: primer avance del módulo de asistencias y evidencia técnica del proyecto.
+Actividad evaluada de la semana 10: teclado contextual e interacción táctil en el prototipo de registro de asistencias.
+
+El avance actual demuestra entrada de texto, acción del teclado, selección táctil y retroalimentación en pantalla. La persistencia de datos, los catálogos y la reportería real quedan fuera de esta versión.

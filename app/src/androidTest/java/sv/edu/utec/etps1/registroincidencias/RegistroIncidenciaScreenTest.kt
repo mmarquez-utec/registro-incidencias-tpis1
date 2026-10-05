@@ -30,19 +30,41 @@ class RegistroIncidenciaScreenTest {
     }
 
     @Test
-    fun espaciosNoSeConsideranInformacionValida() {
-        composeTestRule.onNodeWithTag("tituloInput").performTextInput("   ")
-        composeTestRule.onNodeWithTag("descripcionInput").performTextInput("   ")
+    fun botonPermaneceDeshabilitadoSinEstadoSeleccionado() {
+        composeTestRule.onNodeWithTag("tituloInput")
+            .performTextInput("Grupo A - Matemática")
+        composeTestRule.onNodeWithTag("descripcionInput")
+            .performTextInput("Registro de asistencia del horario de la mañana.")
 
         composeTestRule.onNodeWithTag("crearReporteButton").assertIsNotEnabled()
     }
 
     @Test
-    fun crearReporteMuestraRetroalimentacionConElTitulo() {
+    fun espaciosNoSeConsideranInformacionValida() {
+        composeTestRule.onNodeWithTag("tituloInput").performTextInput("   ")
+        composeTestRule.onNodeWithTag("descripcionInput").performTextInput("   ")
+        composeTestRule.onNodeWithTag("estadoPresenteChip").performClick()
+
+        composeTestRule.onNodeWithTag("crearReporteButton").assertIsNotEnabled()
+    }
+
+    @Test
+    fun tocarEstadoMuestraRetroalimentacionVisible() {
+        composeTestRule.onNodeWithTag("estadoPresenteChip").performClick()
+
+        composeTestRule.onNodeWithTag("mensajeEstado")
+            .assertIsDisplayed()
+            .assertTextEquals("Estado seleccionado: Presente")
+    }
+
+    @Test
+    fun crearReporteMuestraRetroalimentacionConTituloYEstado() {
         composeTestRule.onNodeWithTag("tituloInput")
             .performTextInput("Grupo A - Matemática")
         composeTestRule.onNodeWithTag("descripcionInput")
             .performTextInput("Registro de asistencia del horario de la mañana.")
+        composeTestRule.onNodeWithTag("estadoPresenteChip")
+            .performClick()
 
         composeTestRule.onNodeWithTag("crearReporteButton")
             .assertIsEnabled()
@@ -50,6 +72,6 @@ class RegistroIncidenciaScreenTest {
 
         composeTestRule.onNodeWithTag("mensajeEstado")
             .assertIsDisplayed()
-            .assertTextEquals("Registro preparado: Grupo A - Matemática")
+            .assertTextEquals("Registro preparado: Grupo A - Matemática - Estado: Presente")
     }
 }

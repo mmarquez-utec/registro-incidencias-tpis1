@@ -4,8 +4,13 @@
     <string name="screen_instruction">Ingresa una identificación del registro y una descripción breve para preparar la asistencia.</string>
     <string name="field_title">Identificación</string>
     <string name="field_description">Descripción</string>
+    <string name="attendance_status_title">Estado de asistencia</string>
+    <string name="status_present">Presente</string>
+    <string name="status_absent">Ausente</string>
+    <string name="status_excused">Justificado</string>
     <string name="action_create_report">Preparar asistencia</string>
     <string name="feedback_heading">Estado de la asistencia</string>
     <string name="feedback_initial">Aún no hay asistencia preparada.</string>
-    <string name="feedback_report_ready">Registro preparado: %1$s</string>
+    <string name="feedback_status_selected">Estado seleccionado: %1$s</string>
+    <string name="feedback_report_ready">Registro preparado: %1$s - Estado: %2$s</string>
 </resources>

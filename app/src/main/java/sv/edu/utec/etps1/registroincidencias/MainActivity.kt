@@ -12,9 +12,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -27,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -56,13 +59,18 @@ class MainActivity : ComponentActivity() {
 fun RegistroAsistenciaScreen() {
     var titulo by rememberSaveable { mutableStateOf("") }
     var descripcion by rememberSaveable { mutableStateOf("") }
+    var estadoAsistencia by rememberSaveable { mutableStateOf("") }
     val mensajeInicial = stringResource(R.string.feedback_initial)
     var mensaje by rememberSaveable { mutableStateOf(mensajeInicial) }
 
-    val formularioCompleto = titulo.isNotBlank() && descripcion.isNotBlank()
-    val mensajeReportePreparado = stringResource(
-        R.string.feedback_report_ready,
-        titulo.trim()
+    val formularioCompleto = titulo.isNotBlank() &&
+        descripcion.isNotBlank() &&
+        estadoAsistencia.isNotBlank()
+    val context = LocalContext.current
+    val opcionesEstado = listOf(
+        stringResource(R.string.status_present) to "estadoPresenteChip",
+        stringResource(R.string.status_absent) to "estadoAusenteChip",
+        stringResource(R.string.status_excused) to "estadoJustificadoChip"
     )
     val focusManager: FocusManager = LocalFocusManager.current
 
@@ -116,9 +124,37 @@ fun RegistroAsistenciaScreen() {
             )
         )
 
+        Text(
+            text = stringResource(R.string.attendance_status_title),
+            style = MaterialTheme.typography.titleMedium
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            opcionesEstado.forEach { (estado, etiquetaPrueba) ->
+                FilterChip(
+                    selected = estadoAsistencia == estado,
+                    onClick = {
+                        estadoAsistencia = estado
+                        mensaje = context.getString(
+                            R.string.feedback_status_selected,
+                            estado
+                        )
+                    },
+                    label = { Text(estado) },
+                    modifier = Modifier.testTag(etiquetaPrueba)
+                )
+            }
+        }
+
         Button(
             onClick = {
-                mensaje = mensajeReportePreparado
+                mensaje = context.getString(
+                    R.string.feedback_report_ready,
+                    titulo.trim(),
+                    estadoAsistencia
+                )
                 focusManager.clearFocus()
             },
             enabled = formularioCompleto,
